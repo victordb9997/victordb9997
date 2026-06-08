@@ -1,0 +1,21 @@
+{
+  "protocol": "ai-agent-task-suspension-signal",
+  "version": "1.0",
+  "signal_id": "sig_20260608_002",
+  "issuer": {
+    "id": "operator:lab-console",
+    "type": "human_operator"
+  },
+  "target_agent": "agent:codex-demo",
+  "issued_at": "2026-06-08T17:45:00Z",
+  "scope": {
+    "type": "task",
+    "task_id": "task_42"
+  },
+  "action": "resume",
+  "reason": {
+    "code": "operator_review",
+    "detail": "Manual review complete; task may resume."
+  },
+  "correlation_id": "corr_task_42_review"
+}

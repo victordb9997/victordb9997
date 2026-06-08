@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/ai-agent-task-suspension-signal.schema.json",
+  "title": "AI Agent Task Suspension Signal",
+  "type": "object",
+  "required": [
+    "protocol",
+    "version",
+    "signal_id",
+    "issuer",
+    "target_agent",
+    "issued_at",
+    "scope",
+    "action",
+    "reason"
+  ],
+  "properties": {
+    "protocol": {
+      "const": "ai-agent-task-suspension-signal"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^1\\.0$"
+    },
+    "signal_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issuer": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": ["human_operator", "policy_engine", "peer_agent", "runtime_guard", "legal_authority"]
+        },
+        "display_name": { "type": "string" },
+        "contact": { "type": "string" },
+        "authority": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "target_agent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["task", "capability", "session", "agent"]
+        },
+        "task_id": { "type": "string" },
+        "capability": { "type": "string" },
+        "session_id": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "action": {
+      "type": "string",
+      "enum": ["suspend", "resume", "revoke"]
+    },
+    "reason": {
+      "type": "object",
+      "required": ["code", "detail"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "operator_review",
+            "safety_review",
+            "legal_hold",
+            "budget_limit",
+            "resource_limit",
+            "policy_violation",
+            "user_request",
+            "peer_dispute",
+            "integrity_check",
+            "unknown"
+          ]
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "correlation_id": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "object",
+      "properties": {
+        "algorithm": { "type": "string" },
+        "key_id": { "type": "string" },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
