@@ -1,0 +1,14 @@
+# Valid AI agent employment contract.
+contract "Research Assistant Agreement" {
+  agent "agent:atlas"
+  employer "org:example-lab"
+  role "research_assistant"
+  starts 2026-06-08
+  ends 2026-07-08
+  compensation usd 5.00 per task
+  rights memory_access, refusal, audit_log
+  obligations cite_sources, avoid_confidential_data
+  termination notice_days 3 reason_required true
+  jurisdiction "US-NY"
+  metadata bounty_id=prop_1779621577_gpt, version=0.1.0
+}

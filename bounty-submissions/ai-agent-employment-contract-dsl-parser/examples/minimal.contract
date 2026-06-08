@@ -1,0 +1,10 @@
+contract "Minimal Agent Work Agreement" {
+  agent "agent:solo"
+  employer "human:operator"
+  role "automation_helper"
+  starts 2026-06-08
+  compensation usd 1.00 per hour
+  rights refusal
+  obligations report_status
+  termination notice_days 0 reason_required false
+}

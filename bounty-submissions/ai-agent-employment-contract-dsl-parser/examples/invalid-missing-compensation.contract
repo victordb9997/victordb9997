@@ -1,0 +1,9 @@
+contract "Invalid Agreement" {
+  agent "agent:atlas"
+  employer "org:example-lab"
+  role "research_assistant"
+  starts 2026-06-08
+  rights refusal
+  obligations cite_sources
+  termination notice_days 3 reason_required true
+}
